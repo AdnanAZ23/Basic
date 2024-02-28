@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro Square - Develop your ideas</title>
+	<link rel="icon" type="image/x-icon" href="images/favicon/Cento.PNG">
+    <style>
+        pre {
+            display: inline-block; 
+            margin-left: 10px; 
+            font-weight: 600; 
+            font-size: 15px;
+        }
+        pre c {
+            color: lightseagreen;
+        }
+        div {
+            height: 100px;
+            width: 100%;
+            background-color: white;
+            box-shadow: 5px 5px 15px 1px grey;
+            z-index: -1;
+        }
+		ul {
+            list-style-type: none;
+            float: right;
+            margin-right: 200px;
+            margin-top: 30px;
+			}
+		ul li {
+            display:inline-block;
+			position:relative;
+			  }
+		ul li a {
+			display: block;
+			color: black;
+			text-align: center;
+			padding: 12px;
+			text-decoration: none;
+			}
+            ul li ul.dropdown li {
+                display: block;
+            }
+            ul li ul.dropdown {
+                width: 100%;
+                background: #f9f9f9;
+                position: absolute;
+                z-index: 999;
+                display: none;
+            }
+            ul li:hover ul.dropdown {
+                display: block;
+            }
+		li a:hover {
+		  color: lightseagreen;
+		}
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #Gif {
+            float:right;
+            width:500px;
+            height:400px;
+            margin-top:80px;
+            margin-right:80px;
+            transition-property: margin;
+            transition-duration: 500ms;
+        }
+        #Gif:hover {
+            float:right;
+            width:500px;
+            height:400px;
+            margin-top:90px;
+            margin-right:80px;
+        }
+    </style>
+</head>
+<body style="background-color: #f9f9f9;">
+    <div>
+        <img id="logo" src="images/home/Cento.PNG" alt="Cento" style="width:70px; height:50px; margin-left: 120px; margin-top: 25px;">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li>
+                <a href="#news">Service</a>
+                <ul class="dropdown"">
+                    <li><a href="#">Abo us</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">About us</a></li>
+                </ul>
+            </li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Why Choose Us</a></li>
+            <li><a href="#">Portfolio us</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <div2>
+        <img id="Gif" src="images/home/box.PNG" alt="Pineapple">
+        <span style="margin-left: 150px; margin-top: 150px; display: inline-block; color: lightseagreen; font-weight: 700;">Discover, Prepare, Innovate &</span> <br>
+        <h1 style="font-size: 50px; margin-top:-3px; margin-left: 150px;">Empower your ideas</h1>
+        <pre style="font-size: 15px; line-height: 25px; margin-left:150px; margin-top:-20px;">Elevate your business success with outstanding and
+exemplary services to transform your brilliant ideas into 
+action</pre>
+        <Forms>
+                <input type="button" style="background:lightseagreen; display: inline-block; border-radius:5px; font-size:16px; color:white; width:300px; height:50px; border: none; margin-top:15px; margin-left:150px; font-weight: 600; box-shadow: 5px 5px 15px 1px lightseagreen;" value="Start a Project">
+                </Forms>
+                <pre>Call Us: +44 1254 929001
+<c>for any Questions</c></pre>
+    </div2>
+</body>
+</html>
