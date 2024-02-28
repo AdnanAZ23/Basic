@@ -1,0 +1,42 @@
+import './App.css'
+import { Check } from './User'
+
+//const age = 15;
+//const isGreen = true;
+// const users = [
+//   { name: "Pedro", age: 21 },
+//   { name: "Adnan", age: 25 },
+//   { name: "Adil", age: 27 }
+// ];
+
+function App() {
+  //Part1
+  // <div className='App' >
+  //   {age >= 18 ? <h1>OVER AGE</h1> : <h1>UNDER AGE</h1>}
+  //   <h1 style={{ color: isGreen ? "green" : "red" }}>What color do you choose</h1>
+  //   {isGreen && <button>THIS IS A BUTTON</button>}
+  // </div>
+  //   {users.map((userreturn ) => {
+  //Part2
+  // <div className='App'>
+  //     return <User name={user.name} age={user.age} />
+  //   })}
+  // </div>
+  //Hometask
+  const planets = [
+    { name: "Mars", isGasPlanet: false },
+    { name: "Earth", isGasPlanet: false },
+    { name: "Jupiter", isGasPlanet: true },
+    { name: "Venus", isGasPlanet: false },
+    { name: "Neptune", isGasPlanet: true },
+    { name: "Uranus", isGasPlanet: true },
+  ];
+  return (
+    <div className='App'>
+      {planets.map((planet) => planet.isGasPlanet && <Check name={planet.name} />
+      )}
+    </div>
+  );
+}
+
+export default App

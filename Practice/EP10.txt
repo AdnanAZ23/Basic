@@ -1,0 +1,59 @@
+import "./App.css"
+import { Home } from "./Pages/Home"
+import { Contact } from "./Pages/Conatct"
+import { Menu } from "./Pages/Menu"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import { Navbar } from "./Navbar";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+function App() {
+    const client = new QueryClient({
+        defaultOptions: {
+            queries: {
+                refetchOnWindowFocus: false,
+            }
+        }
+    });
+    const [name, setname] = useState("AdnanAZ");
+    return (
+        <div className="App">
+            <QueryClientProvider client={client}>
+                <Router>
+                    <Navbar />
+                    <Routes>
+                        <Route path="/" element={<Home username={name} />} />
+                        <Route path="/menu" element={<Menu username={name} setname={setname} />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="*" element={<h1>Page not found 404</h1>} />
+                    </Routes>
+                </Router>
+            </QueryClientProvider>
+        </div>
+    );
+};
+
+export default App;
+
+
+
+import { useQuery } from "@tanstack/react-query";
+import Axios from "axios";
+export const Home = (props) => {
+    const { data: catData, isLoading, isError, refetch } = useQuery({
+        querykey: ["cat"],
+        queryFn: () => {
+            return Axios.get("https://catfact.ninja/fact").then((res) => res.data);
+        },
+    });
+    if (isError) {
+        return <h1>Error...</h1>
+    }
+
+    if (isLoading) {
+        return <h1>Loading...</h1>
+    }
+
+    return <h1>This is a Home Page {props.username} <p>{catData?.fact}</p>
+        <button onClick={refetch}>Update Data</button></h1>;
+};

@@ -1,0 +1,49 @@
+import "./App.css";
+import { useState } from "react";
+
+function App() {
+  const [age, setAge] = useState(0);
+  const [inputValue, setInputValue] = useState("");
+  const [showText, setShowText] = useState(true);
+  const [textColor, SetTextColor] = useState("black");
+
+  const increaseAge = () => {
+    setAge(age + 1);
+  }
+
+  const decreaseAge = () => {
+    setAge(age - 1);
+  }
+
+  const toZero = () => {
+    setAge(0);
+  }
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  }
+
+  const toggle = () => {
+    setShowText(!showText);
+  }
+
+  const colorChange = () => {
+    SetTextColor(textColor === "black" ? 'red' : "black");
+  }
+
+  return (
+    <div className="App">
+      <h1>{age} </h1>
+      <button onClick={increaseAge}>Increase Age</button>
+      <button onClick={decreaseAge}>Decrease Age</button>
+      <button onClick={toZero}>Set to Age</button>
+      <input type="text" onChange={handleInputChange}></input>
+      <h1 style={{ color: textColor }}>{inputValue}</h1>
+      <button onClick={toggle}>Show/Hide</button>
+      <button onClick={colorChange}>Change color</button>
+      {showText === true && <h1 style={{ color: textColor }}>Hi My Name Is Adu</h1>}
+    </div>
+  )
+}
+
+export default App;

@@ -1,0 +1,70 @@
+.heading-contact {
+  margin-top: 10px;
+  width: 80%;
+}
+
+.contact-head {
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.contact-text {
+  font-weight: 600;
+  color: #5a5959;
+}
+
+.contact-page {
+  margin: 50px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.btns {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+.main-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.label-cover {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.label-cover label {
+  position: absolute;
+  top: -12px;
+  left: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  background: white;
+  padding: 0 10px;
+}
+
+.label-cover input {
+  height: 40px;
+  padding: 0 8px;
+  border: 1px solid black;
+}
+
+.label-cover text {
+  padding: 5%;
+}
+
+textarea {
+  border: 1px solid black;
+  padding: 10px;
+}

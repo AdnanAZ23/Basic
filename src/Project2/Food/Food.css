@@ -1,0 +1,97 @@
+.filter-container {
+  padding: 20px 10px;
+  margin-top: 20px;
+  background-image: url("../../../public/bg.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.filter-btns {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#search {
+  margin-left: auto;
+  border: 1px solid #ff4343;
+  background-color: #323334;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.food-btns {
+  cursor: pointer;
+  color: white;
+  background: #ff4343;
+  border-radius: 5px;
+  padding: 6px 12px;
+  border: none;
+}
+
+.filter-cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px auto;
+}
+
+.food-card-image {
+  width: 100%;
+}
+
+.food-card {
+  display: flex;
+  align-items: center;
+  flex: 0 0 31%;
+  margin: 1%;
+  background: url("../../../public/Rectangle1.png"),
+    radial-gradient(
+      90.16% 143% at 15.32% 21%,
+      rgba(165, 240, 255, 0.2) 0%,
+      rgba(110, 190, 244, 0.044) 77%,
+      rgba(70, 144, 213, 0) 100%
+    );
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: overlay, normal;
+  backdrop-filter: blur(13.18px);
+  border-radius: 20px;
+}
+
+.food-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  align-items: flex-end;
+  padding: 15px;
+}
+
+.food-card-heading {
+  color: white;
+  font-weight: 500;
+}
+
+.food-card-text {
+  color: white;
+  font-size: 12;
+}
+
+@media (max-width: 1280px) {
+  .food-card {
+    flex: 0 48%;
+  }
+}
+
+@media (max-width: 800px) {
+  .food-card {
+    flex: 98%;
+  }
+}
+
+@media (max-width: 530px) {
+  .filter-btns {
+    flex-wrap: wrap-reverse;
+  }
+}

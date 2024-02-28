@@ -1,0 +1,103 @@
+import "./App.css";
+import { Cat } from "./Cat";
+import { useCount } from "./useCount";
+import { useToggle } from "./useToggle";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+function App() {
+    const client = new QueryClient();
+    const [isVisible, setIsVisible] = useToggle();
+    const [count, increase, decrease, restart] = useCount();
+    return (
+        <div className="App">
+            <QueryClientProvider client={client}>
+                <button onClick={setIsVisible}>{isVisible ? "Hide" : "Show"}</button>
+                {isVisible && <h1>Showing hidden text</h1>}
+                <Cat />
+                {count}
+                <button onClick={increase}>Increase</button>
+                <button onClick={decrease}>Decrease</button>
+                <button onClick={restart}>Restart</button>
+            </QueryClientProvider>
+        </div >
+    );
+};
+
+export default App;
+
+
+
+
+import { useState } from "react";
+
+export const useCount = (initialVal = 0) => {
+    const [state, setState] = useState(initialVal);
+
+    const increase = () => {
+        setState((prev) => prev + 1);
+    };
+
+    const decrease = () => {
+        setState((prev) => prev - 1);
+    };
+
+    const restart = () => {
+        setState(0);
+    };
+
+    return [state, increase, decrease, restart];
+};
+
+
+
+
+import { useState } from "react";
+
+export const useToggle = (initialVal = false) => {
+    const [state, setState] = useState(initialVal);
+
+    const toggle = () => {
+        setState((prev) => !prev);
+    };
+    return [state, toggle];
+};
+
+
+
+import { useGetFact } from "./useGetFact";
+
+export const Cat = () => {
+    const { data, refetchData } = useGetFact();
+    return (
+        <div>
+            <h1>{data?.fact}</h1>
+            <button onClick={refetchData}>Refetch</button>
+        </div>
+    );
+};
+
+
+
+
+import { useQuery } from "@tanstack/react-query";
+import Axios from "axios";
+
+export const useGetFact = () => {
+    const { data, refetch, isLoading, error } = useQuery({
+        queryKey: ["cat"],
+        queryFn: async () => {
+            return Axios.get("https://catfact.ninja/fact").then((res) => res.data);
+        },
+    });
+
+    const refetchData = () => {
+        alert("Data Refetched");
+        refetch();
+    };
+
+    if (isLoading) return <h1>Loading...</h1>
+
+    if (error) return <h1>Link is broken...</h1>
+
+    return { data, refetchData, isLoading };
+};

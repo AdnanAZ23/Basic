@@ -1,0 +1,49 @@
+import './App.css';
+import { Home } from './Pages/Home';
+import { Menu } from './Pages/Menu';
+import { Contact } from './Pages/Conatct';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Navbar } from './Navbar';
+import { useState, createContext } from 'react';
+
+export const AppContext = createContext();
+
+function App() {
+    const [username, setUsername] = useState("Adnan AZ");
+    return (
+        <div className='App'>
+            <AppContext.Provider value={{ username, setUsername }}>
+                <Router>
+                    <Navbar />
+                    <Routes>
+                        <Route path="/" element={<Home username={username} />} />
+                        <Route path="/menu" element={<Menu username={username} setUsername={setUsername} />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="*" element={<h1>Page Not Found 404</h1>} />
+                    </Routes>
+                </Router>
+            </AppContext.Provider>
+        </div>
+    );
+};
+
+export default App;
+
+
+
+import { useState } from "react";
+import { useContext } from "react";
+import { AppContext } from "../App";
+
+export const ChangeProfile = () => {
+    const [newUsername, setNewUsername] = useState();
+    const { setUsername } = useContext(AppContext);
+    return (
+        <div>
+            <input onChange={(event) => {
+                setNewUsername(event.target.value);
+            }} />
+            <button onClick={() => { setUsername(newUsername) }}>Change Username</button>
+        </div>
+    );
+};

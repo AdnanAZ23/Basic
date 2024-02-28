@@ -1,0 +1,80 @@
+import "./App.css"
+import { Home } from "./Pages/Home"
+import { Contact } from "./Pages/Conatct"
+import { Menu } from "./Pages/Menu"
+import { useState } from "react";
+import { Navbar } from "./Navbar";
+import { Form } from "./Form";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+function App() {
+    const client = new QueryClient({
+        defaultOptions: {
+            queries: {
+                refetchOnWindowFocus: false,
+            }
+        }
+    });
+    const [name, setname] = useState("AdnanAZ");
+    return (
+        <div className="App">
+            <QueryClientProvider client={client}>
+                <Router>
+                    <Navbar />
+                    <br />
+                    <Form />
+                    <Routes>
+                        <Route path="/" element={<Home username={name} />} />
+                        <Route path="/menu" element={<Menu username={name} setname={setname} />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="*" element={<h1>Page not found 404</h1>} />
+                    </Routes>
+                </Router>
+            </QueryClientProvider>
+        </div>
+    );
+};
+
+export default App;
+
+
+
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup";
+
+export const Form = () => {
+
+    const schema = yup.object().shape({
+        fullName: yup.string().required(),
+        email: yup.string().email().required(),
+        age: yup.number().positive().integer().min(18).required(),
+        password: yup.string().min(4).max(20).required(),
+        confirmPassword: yup.string().oneOf([yup.ref("password"), null]).required(),
+    });
+
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schema),
+    });
+
+    const onSubmit = (data) => {
+        console.log(data);
+    };
+
+    return (
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <input type="text" placeholder="Full Name..." {...register("fullName")} /><br />
+            <p>{errors.fullName?.message}</p>
+            <input type="text" placeholder="Email..."{...register("email")} /><br />
+            <p>{errors.email?.message}</p>
+            <input type="number" placeholder="Age..."{...register("age")} /><br />
+            <p>{errors.age?.message}</p>
+            <input type="password" placeholder="Password..."{...register("password")} /><br />
+            <p>{errors.password?.message}</p>
+            <input type="password" placeholder="Confirm Password..."{...register("confirmPassword")} /><br /><br />
+            <p>{errors.confirmPassword?.message}</p>
+            <input type="submit" /><br />
+        </form>
+    );
+};

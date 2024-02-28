@@ -1,0 +1,71 @@
+.dicegame-cover {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dicegame-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.total-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.number {
+  font-size: 100px;
+  font-weight: 500;
+  line-height: 92px;
+}
+
+.score {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.error-msg {
+  color: red;
+  font-size: 24px;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 30px;
+}
+
+.select-number {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.dicegame-bottom {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.dice-image {
+  cursor: pointer;
+}
+
+.rules-container {
+  padding: 5px 10px;
+  background: #fbf1f1;
+  margin-top: 30px;
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+}
+
+.rule-heading {
+  font-weight: bold;
+  font-size: 24px;
+}

@@ -1,0 +1,23 @@
+{selectedCurrency === 'Male' ? (
+                <form>
+                    <label>
+                        Enter your name:
+                        <input type="text" />
+                    </label>
+                    <label>
+                        Enter your address:
+                        <input type="text" />
+                    </label>
+                </form>
+            ) : (
+                <form>
+                    <label>
+                        Enter your Nicename:
+                        <input type="text" />
+                    </label>
+                    <label>
+                        Enter your Age:
+                        <input type="number" />
+                    </label>
+                </form>
+            )}
